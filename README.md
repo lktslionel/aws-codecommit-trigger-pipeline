@@ -61,8 +61,9 @@ For the application to work, you need:
 
 * An AWS Account to deploy the application
 * An AWS IAM Role with the necessary permissions to trigger the targetted AWS Codepipeline pipeline.
-  > [!NOTE]
-  > The built-ins role and permissions provided is, wanted, permissive to ease integration; but make sure to provide another one the the right set of permissions following the Least Priviledge principle.
+
+> [!NOTE]
+> The built-ins role and permissions provided is, wanted, permissive to ease integration; but make sure to provide another one the the right set of permissions following the Least Priviledge principle.
 
 
 ### 2.1. Install / Subscribe
