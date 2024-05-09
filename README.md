@@ -42,11 +42,14 @@ AWS Serverless Application that triggers an AWS Codepipeline pipeline on CodeCom
 
 ## 1. Overview
 
-< brief description of the component and its purpose >
+**AWS Codecommit Trigger Pipeline** is an  AWS Serverless Application which is configured to trigger an AWS Codepipeline pipeline as a result of an AWS CodeCommit Repository State Change.
 
-<br>
+It supports the following AWS Codecommit change events:
 
-< list key features of the component >
+* [ReferenceCreated](https://docs.aws.amazon.com/codecommit/latest/userguide/monitoring-events.html#referenceCreated)
+* [ReferenceUpdated](https://docs.aws.amazon.com/codecommit/latest/userguide/monitoring-events.html#referenceUpdated)
+* [ReferenceDeleted](https://docs.aws.amazon.com/codecommit/latest/userguide/monitoring-events.html#referenceDeleted)
+* [UnreferencedMergeCommitCreated](https://docs.aws.amazon.com/codecommit/latest/userguide/monitoring-events.html#unreferencedMergeCommitCreated)
 
 <br>
 
@@ -54,7 +57,13 @@ AWS Serverless Application that triggers an AWS Codepipeline pipeline on CodeCom
 
 ### 2.1. Prerequisites
 
-< list any prerequisitesand system requirements >
+For the application to work, you need:
+
+* An AWS Account to deploy the application
+* An AWS IAM Role with the necessary permissions to trigger the targetted AWS Codepipeline pipeline.
+  > [!NOTE]
+  > The built-ins role and permissions provided is, wanted, permissive to ease integration; but make sure to provide another one the the right set of permissions following the Least Priviledge principle.
+
 
 ### 2.1. Install / Subscribe
 
