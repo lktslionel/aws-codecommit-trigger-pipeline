@@ -11,7 +11,7 @@ AWS Serverless Application that triggers an AWS Codepipeline pipeline on CodeCom
 - [1. Overview](#1-overview)
 - [2. Quickstart](#2-quickstart)
   - [2.1. Prerequisites](#21-prerequisites)
-  - [2.1. Install / Subscribe](#21-install--subscribe)
+  - [2.1. Deploy](#21-deploy)
   - [2.2. Usage](#22-usage)
   - [2.3. Demo](#23-demo)
   - [2.4. Uninstall / Unsubscribe](#24-uninstall--unsubscribe)
@@ -66,9 +66,38 @@ For the application to work, you need:
 > The built-ins role and permissions provided is, wanted, permissive to ease integration; but make sure to provide another one the the right set of permissions following the Least Priviledge principle.
 
 
-### 2.1. Install / Subscribe
+### 2.1. Deploy
 
-< describe how to setup or install the component >
+Before using this application as a trigger for codepipeline, you must deploy the application to the AWS Serverless Application Repository within your AWS Account.
+
+> [!NOTE]
+> Replace `<tag-version>` by the release tag version you want to deploy. For instance `tag-version` should be replaced by `A.B.C` if you want to deploy the version `A.B.C`.
+
+<br>
+
+**Step 1: Download release archive**
+
+Go to [Releases](/releases) and download the assets matching the version you want to deploy. 
+Eg:  `aws-codecommit-trigger-pipeline-v<tag-version>.zip`
+
+**Step 2: Extract archive**
+
+```sh
+unzip aws-codecommit-trigger-pipeline-vA.B.C.zip
+cd $_
+```
+
+
+**Step 3: Authenticate to your AWS Account**
+
+Use `aws configure` to provide the AWS Credentials to the AWS CLI.
+
+**Step 4: Deploy the application w/ AWS SAM**
+
+```sh
+sam deploy
+```
+
 
 ### 2.2. Usage
 
@@ -190,16 +219,12 @@ Tell people where they can go to for help. It can be any combination of an issue
 
 <br>
 
-
-<br>
-
 ## 8. Maintainer(s)
 
-Team Code - Team Name <team@company.com](mailto:team@company.com)>
+Tsklabs Support Team <[lktslionel+team/tsklabs@trueskil.co](mailto:lktslionel+team/tsklabs@trueskil.co)>
 
 <br>
 
 ## 9. License
 
-(c) `<year>` - `<company-name>`
-Licensed under the `<license>` license.
+See [LICENSE](./LICENSE)
