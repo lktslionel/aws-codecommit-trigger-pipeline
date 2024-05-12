@@ -30,7 +30,11 @@ AWS Serverless Application that triggers an AWS Codepipeline pipeline on CodeCom
   - [5.4. FAQ](#54-faq)
 - [6. Contributing](#6-contributing)
   - [6.1. Instructions](#61-instructions)
-  - [6.2. Code of Conduct](#62-code-of-conduct)
+  - [6.3. Build](#63-build)
+  - [6.4. Package](#64-package)
+  - [6.4. Deliver](#64-deliver)
+  - [6.4. Deploy](#64-deploy)
+  - [6.4. Delete](#64-delete)
   - [6.2. Styleguide](#62-styleguide)
 - [7. Feedback \& Support](#7-feedback--support)
   - [7.1. Feedback](#71-feedback)
@@ -197,7 +201,62 @@ Commit your changes (git commit -am 'Add some fooBar')
 Push to the branch (git push origin feature/fooBar)
 Create a new Pull Request
 
-### 6.2. Code of Conduct
+### 6.3. Build
+
+To build the application, run the following commands
+
+```sh
+# Install dependencies
+pdm install
+
+# Activate virtual env
+eval $(pdm venv activate)
+
+#
+# Building
+#
+
+# Generate requirements.txt with the application dependencies
+pdm export --production  -f requirements -o src/aws_codecommit_trigger_pipeline/requirements.txt 
+
+# Build using docker container
+sam build --base-dir src --template src/template.yaml --use-container  --no-cached
+
+```
+
+### 6.4. Package
+
+```sh
+zip -r aws-codecommit-trigger-pipeline-vA.B.C-preview.N.zip .aws-sam/build 
+```
+
+
+### 6.4. Deliver
+
+```sh
+Upload `aws-codecommit-trigger-pipeline-vA.B.C-preview.N.zip ` to your artificat repository
+```
+
+### 6.4. Deploy
+
+1. Download the artifact from your artifact repositiory `aws-codecommit-trigger-pipeline-vA.B.C-preview.N.zip` 
+2. Run the following command to start de deployment 
+    
+    ```sh
+    sam deploy --stack-name awsctp-aws-codecommit-trigger-pipeline --resolve-s3 --on-failure DELETE --capabilities CAPABILITY_AUTO_EXPAND CAPABILITY_IAM
+    ```
+
+    with profile:
+
+    ```sh
+    sam deploy aws-codecommit-trigger-pipeline-vA.B.C-preview.N.zip --profile sdbx --stack-name awsctp-aws-codecommit-trigger-pipeline --resolve-s3 --on-failure DELETE  --capabilities CAPABILITY_AUTO_EXPAND CAPABILITY_IAM
+    ```
+
+### 6.4. Delete
+
+```sh
+sam delete --profile sdbx --stack-name awsctp-aws-codecommit-trigger-pipeline --no-prompts
+```
 
 ### 6.2. Styleguide
 
